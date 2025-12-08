@@ -1,9 +1,9 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: "Microsoft YaHei",Arial; background:#f0f2f5; display:flex; justify-content:center; align-items:center; min-height:100vh; }
-.box { background:#fff; padding:40px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,.15); width:380px; text-align:center; }
-input, button { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:1px solid #ddd; font-size:16px; }
-button { background:#1890ff; color:#fff; border:none; cursor:pointer; }
-button:hover { background:#40a9ff; }
-.error { color:#e74c3c; margin-top:10px; }
-.success { margin:20px 0; font-size:28px; color:#52c41a; }
-#timeout-tip { position:fixed; top:20px; right:20px; background:#ff4d4f; color:#fff; padding:10px 16px; border-radius:6px; display:none; z-index:999; }
+* {margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei",Arial;background:#f0f2f5;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.box{background:#fff;padding:40px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);width:380px;text-align:center}
+input,button{width:100%;padding:12px;margin:10px 0;border-radius:6px;border:1px solid #ddd;font-size:16px}
+button{background:#1890ff;color:#fff;border:none;cursor:pointer}
+button:hover{background:#40a9ff}
+.error{color:#e74c3c;margin-top:10px}
+.success{margin:20px 0;font-size:28px;color:#52c41a}
+#tip{position:fixed;top:20px;right:20px;background:#ff4d4f;color:#fff;padding:10px 16px;border-radius:6px;display:none;z-index:999}
