@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>密钥查询</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="timeout-tip">瑞亚特汽车</div>
+
+  <div class="box">
+    <h2>密钥生成</h2>
+    <input type="text" id="code" maxlength="6" placeholder="1-6位数字"
+           oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <button onclick="gen()">生成</button>
+
+    <div id="result" class="success"></div>
+    <div id="error" class="error"></div>
+
+    <hr>
+    <a href="/login.html">退出登录</a>
+  </div>
+
+  <script>
+    // 30分钟无操作自动退出
+    const T = 1*60*1000;
+    let t; const reset=()=>{clearTimeout(t);document.getElementById('timeout-tip').style.display='none';
+      t=setTimeout(()=>{alert('已超时');location.href='/login.html'},T)};
+    ['click','keydown','scroll','touchstart'].forEach(e=>document.addEventListener(e,reset));
+    setTimeout(()=>document.getElementById('timeout-tip').style.display='block', T-60000);
+    reset();
+
+    async function gen() {
+      const code = document.getElementById('code').value;
+      if(!code) return;
+      const r = await fetch('/api/generate-key', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({code})});
+      const d = await r.json();
+      if(d.success){
+        const k = d.key;
+        document.getElementById('result').innerHTML = `密钥：<b style="font-size:32px;color:#52c41a">${k}</b>
+          <button onclick="navigator.clipboard.writeText('${k}');alert('已复制 ${k}')" style="margin-left:15px">复制</button>`;
+      }else{
+        document.getElementById('error').textContent = d.msg;
+      }
+      reset();
+    }
+  </script>
+</body>
+</html>
