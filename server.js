@@ -48,7 +48,7 @@ app.post('/login', (req, res) => {
   if (req.body.password === LOGIN_PASSWORD) {
     res.cookie('auth', LOGIN_PASSWORD, {
       httpOnly: true,
-      secure: true,
+      //secure: true,
       sameSite: 'strict',
       maxAge: 30 * 60 * 1000   // 30 分钟过期
     });
